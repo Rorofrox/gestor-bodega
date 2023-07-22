@@ -1,0 +1,67 @@
+{% block content %}
+<div class="container">
+  <div class="lista-productos-container">
+    <h2 class="lista-productos-heading">Lista de Productos</h2>
+    <ul class="productos-list">
+      {% for producto in productos %}
+        <li>
+         -Nombre del Producto: {{ producto.nombre }} - Descripcion: {{ producto.descripcion }} - Bodega: 
+          {% for bodega in producto.bodegas.all %}
+            {{ bodega.nombre }}
+          {% endfor %}
+          - Cantidad: {{ producto.cantidad_producto }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<style>
+  /* Estilos para lista_productos.html */
+  body {
+    background-image: url('https://ferremakros.com/wp-content/uploads/2019/07/Bodegas-HD.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .lista-productos-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%; /* Ajusta el ancho del contenedor */
+    margin: auto; /* Centra el contenedor */
+  }
+
+  .lista-productos-heading {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .productos-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .productos-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  /* Agrega más estilos personalizados si lo deseas */
+</style>
+{% endblock %}

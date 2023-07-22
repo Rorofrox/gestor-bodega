@@ -1,0 +1,31 @@
+{% block content %}
+  <div class="crear-movimiento-container">
+    <div class="form-container">
+      <h2 class="crear-movimiento-heading">Generar Traspaso</h2>
+      <form method="post" class="crear-movimiento-form">
+        {% csrf_token %}
+        <div class="form-field">
+          <label for="{{ form.bodega_origen.id_for_label }}">Bodega Origen:</label>
+          {{ form.bodega_origen }}
+        </div>
+        <div class="form-field">
+          <label for="{{ form.bodega_destino.id_for_label }}">Bodega Destino:</label>
+          {{ form.bodega_destino }}
+        </div>
+        <div class="form-field">
+          <label for="{{ form.productos.id_for_label }}">Productos:</label>
+          {{ form.productos }}
+        </div>
+        <div class="productos-info">
+          {% for producto in form.productos %}
+            <p>{{ producto.label_tag }} está en la bodega: {{ producto.bodega.first }}</p>
+          {% endfor %}
+        </div>
+        <button type="submit" class="crear-movimiento-button">Guardar</button>
+      </form>
+    </div>
+  </div>
+  <style>
+    /* Estilos para crear_movimiento.html */
+  </style>
+{% endblock %}

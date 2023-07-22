@@ -1,0 +1,78 @@
+
+
+{% block content %}
+  <div class="register-container">
+    <div class="form-container">
+      <h2 class="perfil-usuario-heading">Perfil de Usuario</h2>
+      <p>Nombre de usuario: {{ perfil_usuario.username }}</p>
+      <p>Rol: {{ perfil_usuario.get_rol_display }}</p>
+      <div class="button-container">
+        <a href="{% url 'gestion_bodegas' %}" class="gestion-bodegas-button">Gestión de Bodegas</a>
+        <!-- Add other buttons or links here to redirect to different views if needed -->
+      </div>
+    </div>
+  </div>
+  <style>
+    body {
+      background-image: url('https://ferremakros.com/wp-content/uploads/2019/07/Bodegas-HD.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilos para perfil_usuario.html */
+    .register-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px; /* Adjust the max-width to your preference */
+    }
+
+    .perfil-usuario-heading {
+      color: #000;
+      font-size: 24px;
+      /* Otros estilos de encabezado */
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .gestion-bodegas-button {
+      background-color: #f00;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .gestion-bodegas-button:hover {
+      background-color: #ff5555;
+    }
+
+    .gestion-bodegas-button:active {
+      background-color: #cc0000;
+    }
+  </style>
+{% endblock %}
+
+
+

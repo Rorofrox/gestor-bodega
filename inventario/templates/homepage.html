@@ -1,0 +1,70 @@
+{% block content %}
+  <div class="homepage-container">
+    <h2 class="homepage-heading">Gestor de Bodegas y Stock</h2>
+    <div class="button-container">
+      <a href="{% url 'register' %}" class="register-button">Registrarse</a>
+      <a href="{% url 'login' %}" class="login-button">Iniciar sesión</a>
+    </div>
+  </div>
+  <style>
+    body {
+      background-image: url('https://ferremakros.com/wp-content/uploads/2019/07/Bodegas-HD.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .homepage-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 400px; /* Ajusta el ancho del contenedor según tus necesidades */
+      flex-direction: column;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 0 auto; /* Centra horizontalmente el contenedor */
+      margin-top: 40vh; /* Ajusta el margen superior para centrar verticalmente */
+    }
+
+    .homepage-heading {
+      color: #000;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .register-button,
+    .login-button {
+      background-color: #f00;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 10px;
+    }
+
+    .register-button:hover,
+    .login-button:hover {
+      background-color: #ff5555;
+    }
+
+    .register-button:active,
+    .login-button:active {
+      background-color: #cc0000;
+    }
+  </style>
+{% endblock %}
+

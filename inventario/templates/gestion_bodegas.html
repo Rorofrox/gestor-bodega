@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gestión de Bodegas</title>
+  <style>
+    body {
+      background-image: url('https://ferremakros.com/wp-content/uploads/2019/07/Bodegas-HD.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+   
+
+    .gestion-bodegas-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column; /* Agregamos flex-direction para que los elementos se apilen verticalmente */
+      align-items: center; /* Centramos horizontalmente los elementos */
+    }
+
+    .bodegas-list {
+      padding-right: 20px;
+    }
+
+    /* ... Otros estilos ... */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="gestion-bodegas-container">
+      <div class="bodegas-list">
+        <h2 class="gestion-bodegas-heading">Bodegas</h2>
+        <ul>
+          {% for bodega in bodegas %}
+            <li>
+              {{ bodega.nombre }}
+              <a href="{% url 'lista_productos' %}?bodega_id={{ bodega.id }}">Ver Productos</a>
+            </li>
+            <ul>
+              {% for producto in bodega.productos.all %}
+                <li>{{ producto.nombre }} - Stock: {{ producto.cantidad_producto }}</li>
+              {% endfor %}
+            </ul>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="form-container">
+        <h2 class="crear-movimiento-heading">Traspaso stock</h2>
+        <form method="post" class="crear-movimiento-form">
+          {% csrf_token %}
+          <div class="form-field">
+            <label for="{{ movimiento_form.bodega_origen.id_for_label }}">Bodega Origen:</label>
+            {{ movimiento_form.bodega_origen }}
+          </div>
+          <div class="form-field">
+            <label for="{{ movimiento_form.bodega_destino.id_for_label }}">Bodega Destino:</label>
+            {{ movimiento_form.bodega_destino }}
+          </div>
+          <div class="form-field">
+            <label for="{{ movimiento_form.productos.id_for_label }}">confirmar traspaso:</label>
+            {{ movimiento_form.productos }}
+          </div>
+          <button type="submit" class="crear-movimiento-button">Guardar</button>
+        </form>
+      </div>
+    </div>
+    <h2>Productos</h2>
+    <div class="crear-producto-link">
+      <a href="{% url 'crear_producto' %}" class="crear-producto-button">Crear Producto</a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+

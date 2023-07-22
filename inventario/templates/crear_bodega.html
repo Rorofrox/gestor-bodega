@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crear Bodega</title>
+  <style>
+    body {
+      background-image: url('https://ferremakros.com/wp-content/uploads/2019/07/Bodegas-HD.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .crear-bodega-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centra horizontalmente */
+    }
+
+    .crear-bodega-heading {
+      color: #000;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .crear-bodega-form input[type="text"] {
+      width: 250px;
+      height: 40px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .crear-bodega-button {
+      background-color: #f00;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .crear-bodega-button:hover {
+      background-color: #ff5555;
+    }
+
+    .crear-bodega-button:active {
+      background-color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="crear-bodega-container">
+    <div class="form-container">
+      <h2 class="crear-bodega-heading">Crear Bodega</h2>
+      <form method="post" class="crear-bodega-form">
+        {% csrf_token %}
+        <div class="form-field">
+          <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+          {{ form.nombre }}
+        </div>
+        <div class="form-field">
+          <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
+          {{ form.direccion }}
+        </div>
+        <button type="submit" class="crear-bodega-button">Guardar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
